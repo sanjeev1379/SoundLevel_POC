@@ -61,5 +61,10 @@
       "prettier --write",
       "eslint --fix"
     ]
+  },
+  "husky": {
+    "hooks": {
+    "pre-commit": "pretty-quick --staged && npm run lint"
+    }
   }
 }
