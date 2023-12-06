@@ -13,19 +13,37 @@ const ReplyPostScreen = () => {
     }, []);
 
     useEffect(() => {
+        /* 
+            // Write a program to sort the given array
+            let arr = [4, 3, 6, 1, 4, 8, 9];
+            let index;
+            for (index = 0; index < arr.length - 1; index++) {
+                if (arr[index] > arr[index + 1]) {
+                    let temp = arr[index + 1];
+                    arr[index + 1] = arr[index];
+                    arr[index] = temp;
+
+                    index = -1;
+                }
+            }
+            console.log('Sorted Arr using For loop : ', arr);
+        */
+
         // Write a program to sort the given array
-        // Find the Kth largest and Kth smallest number in an array
         let arr = [4, 3, 6, 1, 4, 8, 9];
-        let index;
-        for (index = 0; index < arr.length - 1; index++) {
+        let index = 0;
+
+        while (index < arr.length - 1) {
             if (arr[index] > arr[index + 1]) {
                 let temp = arr[index + 1];
                 arr[index + 1] = arr[index];
                 arr[index] = temp;
-
-                index = -1;
+                index = 0; // Restart the loop from the beginning
+            } else {
+                index++; // Increment the index when no swap is needed
             }
         }
+
         console.log('Sorted Arr using For loop : ', arr);
     }, []);
 
