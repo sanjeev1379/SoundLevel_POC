@@ -157,16 +157,18 @@ const ReplyPostScreen = () => {
         // FizzBuzz Chalange.
         let result: any = [];
 
+        const checkFizzLogic = (buzz: any) => {
+            return buzz ? result.push('FizzBuzz') : result.push('Fizz');
+        };
+
+        const checkBuzzLogic = (buzz: any, index: any) => {
+            return buzz ? result.push('Buzz') : result.push(index);
+        };
+
         new Array(100).fill(0).forEach((_, index) => {
             let fizz = index % 3 === 0;
             let buzz = index % 5 === 0;
-            fizz
-                ? buzz
-                    ? result.push('FizzBuzz')
-                    : result.push('Fizz')
-                : buzz
-                  ? result.push('Buzz')
-                  : result.push(index);
+            fizz ? checkFizzLogic(buzz) : checkBuzzLogic(buzz, index);
         });
         console.log('FizzBuzz Chalange : ', result);
     }, []);
