@@ -8,8 +8,8 @@ const ReplyPostScreen = () => {
         // Write a program to sort the given array
         // Find the Kth largest and Kth smallest number in an array
         let arr = [4, 3, 6, 1, 4, 8, 9];
-        let sortedArr = arr.sort((first, second) => first - second);
-        console.log('Sorted Arr Using Sort Method : ', sortedArr);
+        arr.sort((first, second) => first - second);
+        console.log('Sorted Arr Using Sort Method : ', arr);
     }, []);
 
     useEffect(() => {
@@ -32,7 +32,7 @@ const ReplyPostScreen = () => {
         // Find the occurrence of an integer in the array
         let arr = [4, 3, 6, 1, 4, 8, 9];
         let countOccurs: any = {};
-        arr.map(item => {
+        arr.forEach(item => {
             if (!countOccurs.hasOwnProperty(item)) {
                 Object.assign(countOccurs, { [item]: 1 });
             } else {
@@ -70,7 +70,7 @@ const ReplyPostScreen = () => {
         // Find the missing integer
         let arr = [4, 3, 6, 1, 4, 8, 9];
         let missingInteger = 1;
-        let missingIndex = arr.findIndex(item => item == missingInteger);
+        let missingIndex = arr.findIndex(item => item === missingInteger);
         console.log('Missing Integer: ', missingIndex);
     }, []);
 
@@ -80,13 +80,13 @@ const ReplyPostScreen = () => {
         let duplicate: any = [];
         for (let i = 0; i < arr.length - 1; i++) {
             for (let j = i + 1; j < arr.length - 1; j++) {
-                if (arr[i] == arr[j]) {
+                if (arr[i] === arr[j]) {
                     duplicate.push(arr[i]);
                 }
             }
         }
 
-        duplicate = arr.filter((item, index) => arr.indexOf(item) != index);
+        duplicate = arr.filter((item, index) => arr.indexOf(item) !== index);
         console.log('Duplicate : ', duplicate);
     }, []);
 
@@ -95,13 +95,13 @@ const ReplyPostScreen = () => {
         let arr = [4, 3, 6, 3, 1, 4, 8, 9];
         let duplicate: any = [];
         let unique: any = [];
-        duplicate = arr.filter((item, index) => arr.indexOf(item) != index);
-        arr.filter((item, index) =>
-            arr.indexOf(item) == index ? unique.push(item) : null
+        duplicate = arr.filter((item, index) => arr.indexOf(item) !== index);
+        arr.forEach((item, index) =>
+            arr.indexOf(item) === index ? unique.push(item) : null
         );
 
         let result: any = [];
-        unique.map((item: any) =>
+        unique.forEach((item: any) =>
             !duplicate.includes(item) ? result.push(item) : null
         );
         console.log('Unique Element : ', result);
@@ -113,7 +113,7 @@ const ReplyPostScreen = () => {
         let result = 0;
         let sum = arr.reduce((item, acc) => item + acc, 0);
         result = sum / arr.length;
-        console.log('Unique Element : ', result);
+        console.log('Average Value : ', result);
     }, []);
 
     useEffect(() => {
@@ -126,9 +126,9 @@ const ReplyPostScreen = () => {
             { id: 101, name: 'Java' }
         ];
         let result: any = [];
-        arr.map((input, index) => {
+        arr.forEach((input, index) => {
             let existing = arr.find(
-                () => index == arr.findIndex(item => item.id == input.id)
+                () => index === arr.findIndex(item => item.id === input.id)
             );
             if (existing) {
                 result.push(input);
@@ -156,9 +156,9 @@ const ReplyPostScreen = () => {
         // FizzBuzz Chalange.
         let result: any = [];
 
-        new Array(100).fill(0).map((_, index) => {
-            let fizz = index % 3 == 0;
-            let buzz = index % 5 == 0;
+        new Array(100).fill(0).forEach((_, index) => {
+            let fizz = index % 3 === 0;
+            let buzz = index % 5 === 0;
             fizz
                 ? buzz
                     ? result.push('FizzBuzz')
@@ -201,11 +201,7 @@ const ReplyPostScreen = () => {
                             style={[styles.subHeading]}
                         />
                     </View>
-                    <View
-                        style={[
-                            styles.rowSection,
-                            { justifyContent: 'flex-start' }
-                        ]}>
+                    <View style={[styles.rowSection, styles.flexStart]}>
                         <MaterialIcons
                             name="watch-later"
                             size={14}
@@ -215,11 +211,7 @@ const ReplyPostScreen = () => {
                             3 minutes
                         </Text>
                     </View>
-                    <View
-                        style={[
-                            styles.rowSection,
-                            { justifyContent: 'flex-start' }
-                        ]}>
+                    <View style={[styles.rowSection, styles.flexStart]}>
                         <MaterialIcons name="keyboard" size={14} color="#900" />
                         <Text style={[styles.heading, styles.titleColor]}>
                             Write at atleast 40 words
@@ -278,8 +270,8 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         marginVertical: 2
     },
-    spacing: {
-        marginVertical: 2
+    flexStart: {
+        justifyContent: 'flex-start'
     },
     titleColor: {
         color: '#313132'
