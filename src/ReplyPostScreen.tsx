@@ -219,8 +219,8 @@ const ReplyPostScreen = () => {
                     </View>
                     <View style={styles.bodyBox}>
                         <Text style={styles.body}>
-                            Read a question posted on a online discussion
-                            website. Write a response with advice.
+                            Read a question posted on a online website. Write a
+                            response with advice.
                         </Text>
                         <Text style={[styles.body, styles.bodyBox]}>
                             You will have 3 minutes to read and respond.
