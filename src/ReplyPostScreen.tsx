@@ -16,7 +16,7 @@ const ReplyPostScreen = () => {
         // Write a program to sort the given array
         // Find the Kth largest and Kth smallest number in an array
         let arr = [4, 3, 6, 1, 4, 8, 9];
-        let index = 0;
+        let index;
         for (index = 0; index < arr.length - 1; index++) {
             if (arr[index] > arr[index + 1]) {
                 let temp = arr[index + 1];
