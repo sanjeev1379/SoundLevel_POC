@@ -261,7 +261,8 @@ const styles = StyleSheet.create({
     postBody: {
         paddingHorizontal: 16,
         paddingVertical: 24,
-        backgroundColor: '#fff',
+        backgroundColor: '#fff', // before codepush
+        // backgroundColor: 'blue', // after codepush
         borderTopRightRadius: 80, // move inner item down
         overflow: 'hidden',
         paddingTop: 80
