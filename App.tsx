@@ -5,8 +5,10 @@
  * @format
  */
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
+    NativeModules,
+    Platform,
     SafeAreaView,
     ScrollView,
     StatusBar,
@@ -24,6 +26,30 @@ const App = () => {
     const backgroundStyle = {
         backgroundColor: isDarkMode ? Colors.darker : Colors.lighter
     };
+
+    const forbidFunction = async () => {
+        try {
+            const result = await NativeModules.PreventScreenshotModule.forbid();
+            console.log(result);
+        } catch (e) {
+            console.log('ERROR Occur in forbid ScreenShot => ', e);
+        }
+    };
+
+    const allowFunction = async () => {
+        try {
+            const result = await NativeModules.PreventScreenshotModule.allow();
+            console.log(result);
+        } catch (e) {
+            console.log('ERROR Occur in allow ScreenShot => ', e);
+        }
+    };
+
+    useEffect(() => {
+        if (Platform.OS == 'android') {
+            forbidFunction();
+        }
+    });
 
     return (
         <SafeAreaView style={backgroundStyle}>
