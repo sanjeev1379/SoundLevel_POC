@@ -27,15 +27,7 @@ module.exports = {
     rules: {
         'react/jsx-filename-extension': 'off',
         '@typescript-eslint/no-unused-vars': 'off',
-        'unused-imports/no-unused-vars': [
-            'warn',
-            {
-                vars: 'all',
-                varsIgnorePattern: '^_',
-                args: 'after-used',
-                argsIgnorePattern: '^_'
-            }
-        ],
+        'unused-imports/no-unused-vars': 'off',
         'sort-imports': [
             'error',
             {

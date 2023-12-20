@@ -1,0 +1,36 @@
+{
+    "name": "rtn-calculator",
+    "version": "0.0.1",
+    "description": "Add numbers with Turbo Native Modules",
+    "react-native": "js/index",
+    "source": "js/index",
+    "files": [
+      "js",
+      "android",
+      "ios",
+      "rtn-calculator.podspec",
+      "!android/build",
+      "!ios/build",
+      "!**/__tests__",
+      "!**/__fixtures__",
+      "!**/__mocks__"
+    ],
+    "keywords": ["react-native", "ios", "android"],
+    "author": "Aspire Systems",
+    "license": "MIT",
+    "repository": "https://github.com/sanjeev1379/SoundLevel_POC",
+    "homepage": "https://github.com/sanjeev1379/SoundLevel_POC#readme",
+    "devDependencies": {},
+    "peerDependencies": {
+      "react": "*",
+      "react-native": "*"
+    },
+    "codegenConfig": {
+      "name": "RTNCalculatorSpec",
+      "type": "modules",
+      "jsSrcsDir": "js",
+      "android": {
+        "javaPackageName": "com.rtncalculator"
+      }
+    }
+  }

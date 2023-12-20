@@ -5,23 +5,30 @@
  * @format
  */
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
+    Button,
     NativeModules,
     Platform,
     SafeAreaView,
     ScrollView,
     StatusBar,
     StyleSheet,
+    Text,
+    View,
     useColorScheme
 } from 'react-native';
 import codePush from 'react-native-code-push';
 
 import { Colors } from 'react-native/Libraries/NewAppScreen';
 import ReplyPostScreen from './src/ReplyPostScreen';
+import RTNCalculator from 'rtn-calculator/js/NativeCalculator';
+// import RTNCenteredText from 'rtn-centered-text/js/RTNCenteredTextNativeComponent';
 
 const App = () => {
     const isDarkMode = useColorScheme() === 'dark';
+    const [sumResult, setSumResult] = useState<number | null>(null);
+    const [mulResult, setMulResult] = useState<number | null>(null);
 
     const backgroundStyle = {
         backgroundColor: isDarkMode ? Colors.darker : Colors.lighter
@@ -61,6 +68,42 @@ const App = () => {
                 contentInsetAdjustmentBehavior="automatic"
                 style={backgroundStyle}>
                 <ReplyPostScreen />
+                <View style={{ marginHorizontal: 20, marginTop: 20 }}>
+                    {/* <RTNCenteredText
+                        text="Fabric Randerer Text Componant!"
+                        style={{width: '100%', height: 30}}
+                    /> */}
+                    <Text style={{ marginTop: 20 }}>
+                        Sum: 3+7={sumResult ?? '??'}
+                    </Text>
+                    <Text style={{ marginTop: 20 }}>
+                        Multipy: 3*7={mulResult ?? '??'}
+                    </Text>
+                    <View
+                        style={{
+                            flexDirection: 'row',
+                            justifyContent: 'space-between',
+                            marginTop: 20
+                        }}>
+                        <Button
+                            title="Sum"
+                            onPress={async () => {
+                                const value = await RTNCalculator?.add(3, 7);
+                                setSumResult(value ?? null);
+                            }}
+                        />
+                        <Button
+                            title="Multipy"
+                            onPress={async () => {
+                                const value = await RTNCalculator?.multipy(
+                                    3,
+                                    7
+                                );
+                                setMulResult(value ?? null);
+                            }}
+                        />
+                    </View>
+                </View>
             </ScrollView>
         </SafeAreaView>
     );
